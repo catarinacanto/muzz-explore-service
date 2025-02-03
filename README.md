@@ -36,22 +36,31 @@ A gRPC service that manages user interactions (likes/passes) on Muzz. This servi
 
 - Go 1.23 or later
 - Docker and Docker Compose
-- Make
 
 ### Setup
 
-Clone the repository:
+#### Clone the repository:
 
-`git clone <repository-url> cd muzz-explore-service`  
-Install dependencies:
+```bash
+git clone git@github.com:catarinacanto/muzz-explore-service.git && cd muzz-explore-service
+```  
 
-`go mod tidy`  
-Start the service:
+#### Install dependencies:
 
-`docker-compose up --build`
+```bash
+go mod tidy
+```
+
+#### Start the service:
+```bash
+`docker compose up --build`
+```
+
 ### Running Tests
-
+```bash
 `go test ./... -v`
+```
+
 ## API Endpoints
 
 -   `PutDecision`: Record a user's decision to like or pass another user
@@ -74,61 +83,67 @@ Start the service:
 ## Testing
 
 The service can be tested using grpcurl:
+#### gRPC Debugging
+- Install grpcurl for gRPC service testing:
+  ```bash
+  go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest
 
 ### 1. Put Decision (like)
 
+```bash
     grpcurl -plaintext -d '{  
     "actor_user_id": "user1",  
     "recipient_user_id": "user2",  
     "liked_recipient": true  
     }' localhost:8080 explore.ExploreService/PutDecision  
+```
 
 
 ### 2. Put Decision (pass)
-
+```bash
     grpcurl -plaintext -d '{  
     "actor_user_id": "user1",  
     "recipient_user_id": "user2",  
     "liked_recipient": false  
     }' localhost:8080 explore.ExploreService/PutDecision  
-
+```
 
 ### 3. List all likes for user2
-
+```bash
     grpcurl -plaintext -d '{  
     "recipient_user_id": "user2"  
     }' localhost:8080 explore.ExploreService/ListLikedYou  
-
+```
 
 ### 4. List new (non-mutual) likes for user2
-
+```bash
     grpcurl -plaintext -d '{  
     "recipient_user_id": "user2"  
     }' localhost:8080 explore.ExploreService/ListNewLikedYou  
-
+```
 
 ### 5. Count likes for user2
-
+```bash
     grpcurl -plaintext -d '{  
     "recipient_user_id": "user2"  
     }' localhost:8080 explore.ExploreService/CountLikedYou  
-
+```
 
 ### 6. List likes with pagination
-
+```bash
     grpcurl -plaintext -d '{  
     "recipient_user_id": "user2",  
     "pagination_token": "PASTE_TOKEN_HERE"  
     }' localhost:8080 explore.ExploreService/ListLikedYou  
-
+```
 
 ### 7. List new likes with pagination
-
+```bash
     grpcurl -plaintext -d '{  
     "recipient_user_id": "user2",  
     "pagination_token": "PASTE_TOKEN_HERE"  
     }' localhost:8080 explore.ExploreService/ListNewLikedYou  
-
+```
 
 ## Scaling Considerations
 
