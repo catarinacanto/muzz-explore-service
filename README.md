@@ -42,7 +42,7 @@ A gRPC service that manages user interactions (likes/passes) on Muzz. This servi
 
 Clone the repository:
 
-`git clone <repository-url> cd explore-service`  
+`git clone <repository-url> cd muzz-explore-service`  
 Install dependencies:
 
 `go mod tidy`  
@@ -134,4 +134,3 @@ The service can be tested using grpcurl:
 
 - Cursor-based pagination for efficient handling of large datasets
 - Index optimization for common queries
-- Support for database replicas if needed
