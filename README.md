@@ -16,7 +16,7 @@ A gRPC service that manages user interactions (likes/passes) on Muzz. This servi
 ## Assumptions
 
 - User IDs are unique and valid
-- A user cannot like themselves
+- Users can't like themselves
 - A decision (like/pass) can be changed at any time
 - There's no time limit on when users can like each other
 - Mutual likes are determined by both users liking each other, regardless of timing

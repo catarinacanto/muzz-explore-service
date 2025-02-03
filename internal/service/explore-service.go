@@ -32,6 +32,11 @@ func (s *ExploreService) PutDecision(ctx context.Context, req *pb.PutDecisionReq
 		return nil, status.Error(codes.InvalidArgument, "both actor_user_id and recipient_user_id are required")
 	}
 
+	// Prevent self-liking
+	if req.ActorUserId == req.RecipientUserId {
+		return nil, status.Error(codes.InvalidArgument, "users can't like themselves")
+	}
+
 	mutualLikes, err := s.queries.PutDecision(ctx, db.PutDecisionParams{
 		ActorUserID:     req.ActorUserId,
 		RecipientUserID: req.RecipientUserId,

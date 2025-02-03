@@ -95,6 +95,15 @@ func TestPutDecision(t *testing.T) {
 			},
 			wantErr: true,
 		},
+		{
+			name: "prevent self-liking",
+			req: &pb.PutDecisionRequest{
+				ActorUserId:     "user1",
+				RecipientUserId: "user1",
+				LikedRecipient:  true,
+			},
+			wantErr: true,
+		},
 	}
 
 	for _, tt := range tests {
