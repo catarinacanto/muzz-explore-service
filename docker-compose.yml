@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - DATABASE_URL=postgres://explore:explore@postgres:5432/explore?sslmode=disable
+      - GRPC_PORT=8080
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: sh -c "migrate -database \"$${DATABASE_URL}\" -path /app/internal/db/migrations up && ./muzz-explore-service"
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: explore
+      POSTGRES_PASSWORD: explore
+      POSTGRES_DB: explore
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U explore"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
