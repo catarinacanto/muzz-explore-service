@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c07a661-697a-4e7a-a292-3e8ecab9f114" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/service/explore-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/explore-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_pagination.sh" beforeDir="false" afterPath="$PROJECT_DIR$/test_pagination.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +41,7 @@
     "Docker.docker-compose.yml.db: Compose Deployment.executor": "Run",
     "Go Build.go build muzz-explore-service/cmd/server.executor": "Run",
     "Go Test.TestListNewLikedYou_MutualLikes in muzz-explore-service/internal/service.executor": "Run",
+    "Go Test.TestPutDecision/prevent_self-liking in muzz-explore-service/internal/service.executor": "Run",
     "Go Test.go test muzz-explore-service/internal/service.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.go.formatter.settings.were.checked": "true",
@@ -89,6 +91,18 @@
       <pattern value="^\QTestListNewLikedYou_MutualLikes\E$" />
       <method v="2" />
     </configuration>
+    <configuration name="TestPutDecision/prevent_self-liking in muzz-explore-service/internal/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="muzz-explore-service" />
+      <working_directory value="$PROJECT_DIR$/internal/service" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="muzz-explore-service/internal/service" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestPutDecision\E$/^\Qprevent_self-liking\E$" />
+      <method v="2" />
+    </configuration>
     <configuration name="go test muzz-explore-service/internal/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="muzz-explore-service" />
       <working_directory value="$PROJECT_DIR$/internal/service" />
@@ -119,26 +133,13 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="docker-compose.yml.db: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="db" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Go Test.go test muzz-explore-service/internal/service" />
+        <item itemvalue="Go Test.TestPutDecision/prevent_self-liking in muzz-explore-service/internal/service" />
         <item itemvalue="Go Test.TestListNewLikedYou_MutualLikes in muzz-explore-service/internal/service" />
         <item itemvalue="Go Build.go build muzz-explore-service/cmd/server" />
         <item itemvalue="Docker.docker-compose.yml.app: Compose Deployment" />
-        <item itemvalue="Docker.docker-compose.yml.db: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>

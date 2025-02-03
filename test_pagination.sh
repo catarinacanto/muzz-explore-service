@@ -2,7 +2,7 @@
 
 # Function to create likes
 create_likes() {
-    for i in {1..5}; do
+    for i in {1..52}; do
         echo "Creating like from tester$i to user2..."
         grpcurl -plaintext -d "{
             \"actor_user_id\": \"tester$i\",

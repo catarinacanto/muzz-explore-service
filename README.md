@@ -145,6 +145,17 @@ The service can be tested using grpcurl:
     }' localhost:8080 explore.ExploreService/ListNewLikedYou  
 ```
 
+
+You can also use the provided test script to test pagination:
+
+#### Make script executable
+```bash
+chmod +x test_pagination.sh
+```
+### Run pagination test
+```bash
+./test_pagination.sh
+```
 ## Scaling Considerations
 
 - Cursor-based pagination for efficient handling of large datasets

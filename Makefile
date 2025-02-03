@@ -5,12 +5,6 @@ generate:
 test:
 	go test -v -race ./...
 
-migrate-up:
-	migrate -database "${DATABASE_URL}" -path internal/db/migrations up
-
-migrate-down:
-	migrate -database "${DATABASE_URL}" -path internal/db/migrations down
-
 build:
 	docker-compose build
 
